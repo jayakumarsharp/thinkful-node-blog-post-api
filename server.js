@@ -1,10 +1,11 @@
-const express = require('express');
-const morgan = require('morgan');
+'use strict';
 
-const app = express();
+var express = require('express');
+var morgan = require('morgan');
 
-const blogPostRouter = require('./blogPostRouter');
+var app = express();
 
+var blogPostRouter = require('./blogPostRouter');
 
 app.use(morgan('common'));
 
@@ -13,6 +14,6 @@ app.use(morgan('common'));
 // these router instances act as modular, mini-express apps.
 app.use('/blogPostRouter', blogPostRouter);
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
+app.listen(process.env.PORT || 8080, function () {
+    console.log('Your app is listening on port ' + (process.env.PORT || 8080));
 });
